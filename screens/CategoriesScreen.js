@@ -8,7 +8,7 @@ const CategoriesScreen = ({ navigation }) => {
       <CategoryGridTile
         title={itemData.item.title}
         color={itemData.item.color}
-        onPress={() => navigation.navigate("MealsOverview")}
+        onPress={() => navigation.navigate("MealsOverview", { categoryId: itemData.item.id })}
       />
     );
   };
