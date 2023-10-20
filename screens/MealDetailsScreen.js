@@ -3,9 +3,24 @@ import { MEALS } from "../data/dummy-data";
 import MealOverview from "../components/MealOverview";
 import Subtitle from "../components/MealDetail/Subtitle";
 import List from "../components/MealDetail/List";
+import { useLayoutEffect } from "react";
+import IconButton from "../components/IconButton";
 
-const MealDetailsScreen = ({ route }) => {
+const MealDetailsScreen = ({ navigation, route }) => {
   const selectedMeal = MEALS.find((meal) => meal.id == route.params.id);
+
+  const headerPressBtnHandler = () => {
+    console.log("asdasdasd");
+  };
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => {
+        return <IconButton icon="staro" color="white" onPress={headerPressBtnHandler} />;
+      },
+      title: selectedMeal.title
+    });
+  }, [navigation, headerPressBtnHandler]);
 
   return (
     <ScrollView style={styles.rootContainer}>
